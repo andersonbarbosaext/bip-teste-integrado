@@ -1,0 +1,129 @@
+{
+  "info": {
+    "_postman_id": "c4ac943e-9c8a-4c84-bf10-22e3cb8f87cd",
+    "name": "Beneficio API Collection",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+  {
+  "name": "Transferir Benefício",
+  "request": {
+    "method": "POST",
+    "header": [
+      { "key": "Content-Type", "value": "application/json" }
+    ],
+    "body": {
+      "mode": "raw",
+      "raw": "{\n  \"fromId\": 1,\n  \"toId\": 2,\n  \"valor\": 50.00\n}"
+    },
+    "url": {
+      "raw": "{{baseUrl}}/api/v1/beneficios/transfer",
+      "host": ["{{baseUrl}}"],
+      "path": ["api", "v1", "beneficios", "transfer"]
+    }
+  }
+},
+    {
+      "name": "Listar Todos (sem paginação)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/v1/beneficios",
+          "host": ["{{baseUrl}}"],
+          "path": ["api","v1","beneficios"]
+        }
+      }
+    },
+    {
+      "name": "Listar com Paginação (param name)",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{baseUrl}}/api/v1/beneficios?name={{name}}&page=0&size=10&sort=id,asc",
+          "host": ["{{baseUrl}}"],
+          "path": ["api","v1","beneficios"],
+          "query": [
+            { "key": "name", "value": "{{name}}" },
+            { "key": "page", "value": "0" },
+            { "key": "size", "value": "10" },
+            { "key": "sort", "value": "id,asc" }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Buscar por ID",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{baseUrl}}/api/v1/beneficios/{{id}}",
+          "host": ["{{baseUrl}}"],
+          "path": ["api","v1","beneficios","{{id}}"]
+        }
+      }
+    },
+    {
+      "name": "Criar Benefício",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"nome\": \"Vale Alimentação\",\n  \"descricao\": \"Benefício mensal\",\n  \"valor\": 350.00,\n  \"ativo\": true\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/v1/beneficios",
+          "host": ["{{baseUrl}}"],
+          "path": ["api","v1","beneficios"]
+        }
+      }
+    },
+    {
+      "name": "Atualizar Benefício",
+      "request": {
+        "method": "PUT",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"id\": {{id}},\n  \"nome\": \"Vale Refeição\",\n  \"descricao\": \"Atualizado\",\n  \"valor\": 450.00,\n  \"ativo\": true\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/v1/beneficios/{{id}}",
+          "host": ["{{baseUrl}}"],
+          "path": ["api","v1","beneficios","{{id}}"]
+        }
+      }
+    },
+    {
+      "name": "Excluir Benefício",
+      "request": {
+        "method": "DELETE",
+        "url": {
+          "raw": "{{baseUrl}}/api/v1/beneficios/{{id}}",
+          "host": ["{{baseUrl}}"],
+          "path": ["api","v1","beneficios","{{id}}"]
+        }
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8081"
+    },
+    {
+      "key": "id",
+      "value": "1"
+    },
+    {
+      "key": "name",
+      "value": ""
+    }
+  ]
+}
+

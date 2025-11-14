@@ -1,0 +1,17 @@
+/opt/devs/projects/emprego/bip-teste-integrado/backend-module/src/main/java/com/example/backend/config/EjbClientConfig.java
+/opt/devs/projects/emprego/bip-teste-integrado/backend-module/src/main/java/com/example/backend/application/dto/BeneficioDto.java
+/opt/devs/projects/emprego/bip-teste-integrado/backend-module/src/main/java/com/example/backend/BackendApplication.java
+/opt/devs/projects/emprego/bip-teste-integrado/backend-module/src/main/java/com/example/backend/domain/repository/BeneficioRepository.java
+/opt/devs/projects/emprego/bip-teste-integrado/backend-module/src/main/java/com/example/backend/domain/model/beneficio/MenssageContants.java
+/opt/devs/projects/emprego/bip-teste-integrado/backend-module/src/main/java/com/example/backend/infra/exeption/BusinessException.java
+/opt/devs/projects/emprego/bip-teste-integrado/backend-module/src/main/java/com/example/backend/application/service/BeneficioApplication.java
+/opt/devs/projects/emprego/bip-teste-integrado/backend-module/src/main/java/com/example/backend/infra/exeption/RestExceptionHandler.java
+/opt/devs/projects/emprego/bip-teste-integrado/backend-module/src/main/java/com/example/backend/domain/service/BeneficioService.java
+/opt/devs/projects/emprego/bip-teste-integrado/backend-module/src/main/java/com/example/backend/rest/BeneficioController.java
+/opt/devs/projects/emprego/bip-teste-integrado/backend-module/src/main/java/com/example/backend/domain/model/beneficio/BeneficioNotFoundException.java
+/opt/devs/projects/emprego/bip-teste-integrado/backend-module/src/main/java/com/example/backend/domain/model/beneficio/BeneficioProjection.java
+/opt/devs/projects/emprego/bip-teste-integrado/backend-module/src/main/java/com/example/backend/domain/model/beneficio/Beneficio.java
+/opt/devs/projects/emprego/bip-teste-integrado/backend-module/src/main/java/com/example/backend/infra/exeption/RecordNotFoundException.java
+/opt/devs/projects/emprego/bip-teste-integrado/backend-module/src/main/java/com/example/backend/infra/exeption/FieldError.java
+/opt/devs/projects/emprego/bip-teste-integrado/backend-module/src/main/java/com/example/backend/infra/exeption/ErrorResponse.java
+/opt/devs/projects/emprego/bip-teste-integrado/backend-module/src/main/java/com/example/backend/domain/model/beneficio/BeneficioException.java
