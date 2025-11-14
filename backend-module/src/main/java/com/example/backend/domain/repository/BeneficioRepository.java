@@ -1,5 +1,7 @@
 package com.example.backend.domain.repository;
 
+import java.util.List;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -26,5 +28,7 @@ public interface BeneficioRepository extends JpaRepository<Beneficio, Long> {
 	        + " WHERE ben.ativo = true "
 	        + " AND (:nome IS NULL OR ben.nome ILIKE CONCAT('%', :nome, '%'))")
 	Page<BeneficioProjection> findAllPageable(@Param("nome") String nome, Pageable paginate);
+
+	List<Beneficio> findByAtivoTrue();
 	
 }

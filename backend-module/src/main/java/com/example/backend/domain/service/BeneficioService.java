@@ -28,7 +28,7 @@ public class BeneficioService {
 	}
 	
 	public List<Beneficio> findAll() {
-		return beneficioRepository.findAll();		
+		return beneficioRepository.findByAtivoTrue();		
 	}
 	
 	public Optional<Beneficio> findById(Long id){

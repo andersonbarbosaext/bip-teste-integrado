@@ -1,1 +1,35 @@
-<p>editar-beneficio works!</p>
+<h2>Editar Benefício</h2>
+
+<div class="card">
+
+  <form (ngSubmit)="salvar()" [formGroup]="form">
+
+    <!-- Nome -->
+    <div class="form-group">
+      <label>Nome:</label>
+      <input type="text" formControlName="nome" />
+
+      <div class="error" *ngIf="form.get('nome')?.invalid && form.get('nome')?.touched">
+        O nome é obrigatório.
+      </div>
+    </div>
+
+    <!-- Valor -->
+    <div class="form-group">
+      <label>Valor:</label>
+      <input type="number" formControlName="valor" />
+
+      <div class="error" *ngIf="form.get('valor')?.invalid && form.get('valor')?.touched">
+        O valor é obrigatório.
+      </div>
+    </div>
+
+    <!-- Ações -->
+    <div class="actions">
+      <button type="submit" [disabled]="form.invalid">Salvar</button>
+      <button type="button" class="secondary" routerLink="/beneficios">Voltar</button>
+    </div>
+
+  </form>
+
+</div>
