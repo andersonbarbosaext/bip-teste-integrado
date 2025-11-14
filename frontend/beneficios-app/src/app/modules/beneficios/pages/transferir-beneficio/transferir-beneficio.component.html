@@ -1,0 +1,14 @@
+<h2>Transferir Benefício</h2>
+
+<form (ngSubmit)="transferir()" [formGroup]="form">
+  <label>De (ID):</label>
+  <input formControlName="fromId" type="number">
+
+  <label>Para (ID):</label>
+  <input formControlName="toId" type="number">
+
+  <label>Valor:</label>
+  <input formControlName="valor" type="number">
+
+  <button type="submit">Transferir</button>
+</form>

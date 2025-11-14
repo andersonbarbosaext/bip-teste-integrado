@@ -1,0 +1,11 @@
+<h2>Criar Benefício</h2>
+
+<form (ngSubmit)="salvar()" [formGroup]="form">
+  <label>Nome:</label>
+  <input formControlName="nome">
+
+  <label>Valor:</label>
+  <input formControlName="valor" type="number">
+
+  <button type="submit">Salvar</button>
+</form>

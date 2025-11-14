@@ -1,0 +1,39 @@
+/* You can add global styles to this file, and also import other style files */
+body {
+  font-family: Arial, sans-serif;
+  background: #f3f3f3;
+  margin: 0;
+}
+
+table.tabela {
+  width: 100%;
+  background: #fff;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+
+  th, td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .danger {
+    color: red;
+  }
+}
+
+button {
+  padding: 8px 14px;
+  margin-right: 10px;
+  border: none;
+  background: #4caf50;
+  color: white;
+  border-radius: 4px;
+
+  &:hover {
+    background: #43a047;
+  }
+
+  &.danger:hover {
+    background: #c62828;
+  }
+}

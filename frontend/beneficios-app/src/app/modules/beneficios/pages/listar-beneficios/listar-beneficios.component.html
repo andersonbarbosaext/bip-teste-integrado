@@ -1,0 +1,26 @@
+<h2>Benefícios</h2>
+
+<table class="tabela">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nome</th>
+      <th>Valor</th>
+      <th>Ações</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let b of beneficios">
+      <td>{{ b.id }}</td>
+      <td>{{ b.nome }}</td>
+      <td>{{ b.valor | currency:'BRL' }}</td>
+      <td>
+        <button (click)="editar(b.id)">Editar</button>
+        <button class="danger" (click)="delete(b.id)">Excluir</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<button routerLink="/beneficios/criar">Novo Benefício</button>
