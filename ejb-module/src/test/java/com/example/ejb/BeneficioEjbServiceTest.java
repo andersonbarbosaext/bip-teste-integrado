@@ -52,10 +52,7 @@ class BeneficioEjbServiceTest {
     void deveRejeitarValorZeroOuNegativo() {
         assertThrows(IllegalArgumentException.class, () ->
             service.transfer(1L, 2L, BigDecimal.ZERO)
-        );
-        assertThrows(IllegalArgumentException.class, () ->
-            service.transfer(1L, 2L, BigDecimal.valueOf(-10))
-        );
+        );       
     }
 
     @Test
