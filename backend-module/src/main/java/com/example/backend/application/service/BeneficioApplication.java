@@ -123,8 +123,8 @@ public class BeneficioApplication {
 	public void transfer(Long fromId, Long toId, BigDecimal valor) throws BusinessException {
 		try {
 			beneficioEjbServiceRemote.transfer(fromId, toId, valor);				
-		}catch (Exception e) {
-			e.printStackTrace();
+		} catch (Exception e) {
+			throw new BusinessException(e.getMessage());
 		}
 	}
 
