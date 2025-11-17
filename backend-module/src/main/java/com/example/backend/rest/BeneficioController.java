@@ -38,8 +38,11 @@ public class BeneficioController {
 
 	private static final Logger logger = LogManager.getLogger(BeneficioController.class);
 
-	@Autowired
-	private BeneficioApplication beneficioApplication;
+	private final BeneficioApplication beneficioApplication;
+	
+	public BeneficioController(BeneficioApplication beneficioApplication) {
+		this.beneficioApplication = beneficioApplication;
+	}
 
 	@GetMapping(params = {"name"})
 	@Operation(summary = "Busca todos beneficios com páginação", description = "Busca todos os beneficios com páginação", tags = { "Beneficio" }, responses = {
@@ -61,7 +64,7 @@ public class BeneficioController {
 			@ApiResponse(description = "Not Found", responseCode = "404", content = @Content),
 			@ApiResponse(description = "Internal Error", responseCode = "500", content = @Content), })
 	public ResponseEntity<List<BeneficioDto>> findAll() {
-		return  new ResponseEntity<List<BeneficioDto>>(beneficioApplication.findAll(), HttpStatus.OK);
+		return  new ResponseEntity<>(beneficioApplication.findAll(), HttpStatus.OK);
 	}
 	
 	@GetMapping("/{id}")
@@ -72,7 +75,7 @@ public class BeneficioController {
 			@ApiResponse(description = "Not Found", responseCode = "404", content = @Content),
 			@ApiResponse(description = "Internal Error", responseCode = "500", content = @Content), })
 	public ResponseEntity<BeneficioDto> findById(@PathVariable Long id) {
-		return new ResponseEntity<BeneficioDto>(beneficioApplication.findById(id), HttpStatus.OK);
+		return new ResponseEntity<>(beneficioApplication.findById(id), HttpStatus.OK);
 	}
 
 	@PostMapping
@@ -116,7 +119,7 @@ public class BeneficioController {
 			"beneficio" }, responses = { @ApiResponse(description = "No Content", responseCode = "204", content = @Content),
 					@ApiResponse(description = "Unauthorized", responseCode = "401", content = @Content),
 					@ApiResponse(description = "Not Found", responseCode = "404", content = @Content), })
-	public ResponseEntity<?> delete(@PathVariable Long id) throws BusinessException {
+	public ResponseEntity<Void> delete(@PathVariable Long id) throws BusinessException {
 		
 		logger.info("delete() method started");
 		

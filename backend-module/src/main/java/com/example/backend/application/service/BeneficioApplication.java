@@ -6,7 +6,6 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.data.domain.Page;
@@ -47,9 +46,7 @@ public class BeneficioApplication {
 
 		if (!list.isEmpty()) {
 			Page<BeneficioDto> positions = list.map(BeneficioDto::new);
-			positions.stream().forEach(x -> {
-				x.add(linkTo(methodOn(BeneficioController.class).findById(x.getId())).withRel("1111").withSelfRel());
-			});
+			positions.stream().forEach(x -> x.add(linkTo(methodOn(BeneficioController.class).findById(x.getId())).withRel("1111").withSelfRel()));
 			return positions;
 		}
 
@@ -59,10 +56,8 @@ public class BeneficioApplication {
 	public List<BeneficioDto> findAll() {
 		List<Beneficio> list = beneficioService.findAll();
 
-		List<BeneficioDto> dtos = list.stream().map(BeneficioDto::new).collect(Collectors.toList());
-		dtos.forEach(x -> {
-			x.add(linkTo(methodOn(BeneficioController.class).findById(x.getId())).withSelfRel());
-		});
+		List<BeneficioDto> dtos = list.stream().map(BeneficioDto::new).toList();
+		dtos.forEach(x -> x.add(linkTo(methodOn(BeneficioController.class).findById(x.getId())).withSelfRel()));
 		return dtos;
 	}
 
@@ -113,7 +108,7 @@ public class BeneficioApplication {
 
 	private void validateFields(BeneficioDto beneficioDto) {
 		if (beneficioDto.getNome().length() < 2) {
-			throw new BeneficioException("O nome da posição deve conter 2 ou mais caracteres!");
+			throw new BeneficioException("O nome do beneficio deve conter 2 ou mais caracteres!");
 		}
 	}
 
@@ -125,8 +120,12 @@ public class BeneficioApplication {
 		validateFields(beneficioDto);
 	}
 
-	public void transfer(Long fromId, Long toId, BigDecimal valor) throws BusinessException {		
-		beneficioEjbServiceRemote.transfer(fromId, toId, valor);		
+	public void transfer(Long fromId, Long toId, BigDecimal valor) throws BusinessException {
+		try {
+			beneficioEjbServiceRemote.transfer(fromId, toId, valor);				
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 }

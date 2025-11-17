@@ -131,8 +131,6 @@ class BeneficioApplicationTest {
     void deveSalvarBeneficio() throws BusinessException {
         BeneficioDto dto = dto(null, "Vale Refeição");
    
-        Beneficio b = beneficio(10L, "Vale Refeição", BigDecimal.ZERO);
-   
         doAnswer(invocation -> {
             Beneficio arg = invocation.getArgument(0);
             arg.setId(10L);

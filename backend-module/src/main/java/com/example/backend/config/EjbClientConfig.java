@@ -23,8 +23,8 @@ public class EjbClientConfig {
 	}
 
 	@Bean
-	BeneficioEjbServiceRemote accountService(Context ctx) throws Exception {		
-		String jndi = "ejb:/ejb-module/BeneficioEjbServiceBean!com.example.ejb.BeneficioEjbServiceRemote";
+	BeneficioEjbServiceRemote accountService(Context ctx) throws Exception {			
+		String jndi = "ejb:/ejb-module-1.0.0/BeneficioEjbService!com.example.ejb.BeneficioEjbServiceRemote";
 		return (BeneficioEjbServiceRemote) ctx.lookup(jndi);
 	}
 }

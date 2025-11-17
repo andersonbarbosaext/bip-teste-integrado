@@ -46,8 +46,7 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
 	}
 
 	@ExceptionHandler(Exception.class)
-	public ResponseEntity<ErrorResponse> otherErrors(final Exception ex, final WebRequest request) {
-		//log.error(ex.getMessage(), ex);
+	public ResponseEntity<ErrorResponse> otherErrors(final Exception ex, final WebRequest request) {		
 		return createResponseEntity(ex, request, HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 

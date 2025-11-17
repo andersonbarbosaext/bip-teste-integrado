@@ -40,7 +40,7 @@ public class BeneficioService {
 		beneficioRepository.save(beneficio);		
 	}
 
-	public void update(Beneficio beneficio) throws RuntimeException {
+	public void update(Beneficio beneficio) {
 		beneficioRepository.save(beneficio);
 	}
 
