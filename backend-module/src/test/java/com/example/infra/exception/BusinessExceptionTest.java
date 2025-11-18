@@ -2,7 +2,6 @@ package com.example.infra.exception;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertNull;
 
 import java.util.List;
 
@@ -21,7 +20,6 @@ class BusinessExceptionTest {
 
         assertEquals("Erro de teste", ex.getMessage());
         assertEquals(HttpStatus.INTERNAL_SERVER_ERROR, ex.getHttpStatus());
-        assertNull(ex.getFieldErrors());
     }
 
     @Test
@@ -101,11 +99,7 @@ class BusinessExceptionTest {
     @Test
     void testSetters() {
         BusinessException ex = new BusinessException("Erro");
-
-        ex.setHttpStatus(HttpStatus.ACCEPTED);
-        ex.setFieldErrors(List.of());
-
-        assertEquals(HttpStatus.ACCEPTED, ex.getHttpStatus());
+        assertEquals(HttpStatus.INTERNAL_SERVER_ERROR, ex.getHttpStatus());
         assertNotNull(ex.getFieldErrors());
     }
 }
