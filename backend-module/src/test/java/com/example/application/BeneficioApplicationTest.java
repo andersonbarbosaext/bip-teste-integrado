@@ -27,7 +27,6 @@ import org.springframework.data.domain.PageRequest;
 import com.example.backend.application.dto.BeneficioDto;
 import com.example.backend.application.service.BeneficioApplication;
 import com.example.backend.domain.model.beneficio.Beneficio;
-import com.example.backend.domain.model.beneficio.BeneficioException;
 import com.example.backend.domain.model.beneficio.BeneficioNotFoundException;
 import com.example.backend.domain.model.beneficio.BeneficioProjection;
 import com.example.backend.domain.service.BeneficioService;
@@ -148,11 +147,11 @@ class BeneficioApplicationTest {
     void deveRecusarNomeInvalido() {
         BeneficioDto dto = dto(null, "A");
 
-        assertThrows(BeneficioException.class, () -> app.save(dto));
+        assertThrows(BusinessException.class, () -> app.save(dto));
     }
 
     @Test
-    void deveAtualizarBeneficio() {
+    void deveAtualizarBeneficio() throws BusinessException {
         Beneficio base = beneficio(1L, "Antigo", BigDecimal.TEN);
 
         when(service.findById(1L)).thenReturn(Optional.of(base));
@@ -189,7 +188,7 @@ class BeneficioApplicationTest {
     void deveFalharAoDeletarInexistente() {
         when(service.findById(1L)).thenReturn(Optional.empty());
 
-        assertThrows(BeneficioNotFoundException.class, () -> app.deleteById(1L));
+        assertThrows(BusinessException.class, () -> app.deleteById(1L));
     }
 
     @Test

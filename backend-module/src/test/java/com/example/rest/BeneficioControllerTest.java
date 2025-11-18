@@ -75,12 +75,7 @@ class BeneficioControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$[0].nome").value("Vale"));
     }
-
-
-    // ---------------------------------------------------------
-    // GET /api/v1/beneficios/{id}
-    // ---------------------------------------------------------
-
+    
     @Test
     void deveRetornarBeneficioPorId() throws Exception {
         when(app.findById(1L)).thenReturn(dto(1L, "Teste"));
@@ -89,11 +84,6 @@ class BeneficioControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.nome").value("Teste"));
     }
-
-
-    // ---------------------------------------------------------
-    // POST /api/v1/beneficios
-    // ---------------------------------------------------------
 
     @Test
     void deveSalvarBeneficio() throws Exception {
@@ -108,10 +98,6 @@ class BeneficioControllerTest {
                 .andExpect(jsonPath("$.nome").value("Vale"));
     }
 
-    // ---------------------------------------------------------
-    // PUT /api/v1/beneficios/{id}
-    // ---------------------------------------------------------
-
     @Test
     void deveAtualizarBeneficio() throws Exception {
         BeneficioDto body = dto(1L, "Novo Nome");
@@ -124,10 +110,6 @@ class BeneficioControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.nome").value("Novo Nome"));
     }
-
-    // ---------------------------------------------------------
-    // DELETE /api/v1/beneficios/{id}
-    // ---------------------------------------------------------
 
     @Test
     void deveExcluirBeneficio() throws Exception {

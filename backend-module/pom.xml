@@ -72,12 +72,7 @@
 		  <artifactId>jboss-ejb-client</artifactId>
 		  <version>5.0.8.Final</version>
 		</dependency>
-		<dependency>
-		    <groupId>com.example</groupId>
-		    <artifactId>ejb-module</artifactId>
-		    <version>1.0.0</version>		
-		   <!-- <classifier>api</classifier>-->   
-		</dependency>
+
          <!-- Log4j -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -100,7 +95,12 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
-        </dependency>   	
+        </dependency>
+        <dependency>
+        	<groupId>com.example</groupId>
+        	<artifactId>ejb-module</artifactId>
+        	<version>1.0.0</version>
+        </dependency>
     </dependencies>
     <build>
         <plugins>

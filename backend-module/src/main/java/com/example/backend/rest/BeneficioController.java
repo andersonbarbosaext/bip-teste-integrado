@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
@@ -104,7 +103,7 @@ public class BeneficioController {
 					@ApiResponse(description = "Updated", responseCode = "200", content = @Content(schema = @Schema(implementation = BeneficioDto.class))),
 					@ApiResponse(description = "Bad Request", responseCode = "400", content = @Content),
 					@ApiResponse(description = "Not Found", responseCode = "404", content = @Content), })
-	public ResponseEntity<BeneficioDto> update(@PathVariable Long id, @Valid @RequestBody BeneficioDto beneficioDto) {
+	public ResponseEntity<BeneficioDto> update(@PathVariable Long id, @Valid @RequestBody BeneficioDto beneficioDto) throws BusinessException {
 		
 		logger.info("update() method started");
 

@@ -9,12 +9,13 @@ public class BusinessException extends Exception {
 
 	private static final long serialVersionUID = 1L;
 
-	private HttpStatus httpStatus = HttpStatus.INTERNAL_SERVER_ERROR;
+	private HttpStatus httpStatus;
 
 	private List<FieldError> fieldErrors;
 
 	public BusinessException(final Exception exception) {
 		super(exception);
+		this.httpStatus = HttpStatus.INTERNAL_SERVER_ERROR;
 	}
 
 	public BusinessException(final Exception exception, final HttpStatus httpStatus) {
@@ -24,10 +25,12 @@ public class BusinessException extends Exception {
 
 	public BusinessException(final String message) {
 		super(message);
+		this.httpStatus = HttpStatus.INTERNAL_SERVER_ERROR;
 	}
 
 	public BusinessException(final String message, final Exception exception) {
 		super(message, exception);
+		this.httpStatus = HttpStatus.INTERNAL_SERVER_ERROR;
 	}
 
 	public BusinessException(final String message, final Exception exception, final HttpStatus httpStatus) {

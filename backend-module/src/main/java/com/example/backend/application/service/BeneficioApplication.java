@@ -14,7 +14,6 @@ import org.springframework.stereotype.Service;
 
 import com.example.backend.application.dto.BeneficioDto;
 import com.example.backend.domain.model.beneficio.Beneficio;
-import com.example.backend.domain.model.beneficio.BeneficioException;
 import com.example.backend.domain.model.beneficio.BeneficioNotFoundException;
 import com.example.backend.domain.model.beneficio.BeneficioProjection;
 import com.example.backend.domain.service.BeneficioService;
@@ -86,7 +85,7 @@ public class BeneficioApplication {
 
 	}
 
-	public BeneficioDto update(Long id, BeneficioDto beneficioDto) {
+	public BeneficioDto update(Long id, BeneficioDto beneficioDto) throws BusinessException {
 
 		validateUpdate(beneficioDto);
 
@@ -102,17 +101,21 @@ public class BeneficioApplication {
 	}
 
 	public void deleteById(Long id) throws BusinessException {
-		Beneficio base = beneficioService.findById(id).orElseThrow(BeneficioNotFoundException::new);
-		beneficioService.delete(base);
-	}
-
-	private void validateFields(BeneficioDto beneficioDto) {
-		if (beneficioDto.getNome().length() < 2) {
-			throw new BeneficioException("O nome do beneficio deve conter 2 ou mais caracteres!");
+		try {
+			Beneficio base = beneficioService.findById(id).orElseThrow(BeneficioNotFoundException::new);
+			beneficioService.delete(base);
+		}catch(Exception e) {
+			throw new BusinessException(e.getMessage());
 		}
 	}
 
-	private void validateUpdate(BeneficioDto beneficioDto) {
+	private void validateFields(BeneficioDto beneficioDto) throws BusinessException {
+		if (beneficioDto.getNome().length() < 2) {
+			throw new BusinessException("O nome do beneficio deve conter 2 ou mais caracteres!");
+		}
+	}
+
+	private void validateUpdate(BeneficioDto beneficioDto) throws BusinessException {
 		validateFields(beneficioDto);
 	}
 
