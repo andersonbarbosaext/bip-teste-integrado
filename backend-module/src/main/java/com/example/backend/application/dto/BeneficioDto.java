@@ -2,6 +2,7 @@ package com.example.backend.application.dto;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.Objects;
 
 import org.springframework.hateoas.RepresentationModel;
 
@@ -96,6 +97,28 @@ public class BeneficioDto extends RepresentationModel<BeneficioDto> implements S
 
 	public void setAtivo(Boolean ativo) {
 		this.ativo = ativo;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + Objects.hash(ativo, descricao, id, nome, valor);
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (!super.equals(obj))
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		BeneficioDto other = (BeneficioDto) obj;
+		return Objects.equals(ativo, other.ativo) && Objects.equals(descricao, other.descricao)
+				&& Objects.equals(id, other.id) && Objects.equals(nome, other.nome)
+				&& Objects.equals(valor, other.valor);
 	}
 
 }
